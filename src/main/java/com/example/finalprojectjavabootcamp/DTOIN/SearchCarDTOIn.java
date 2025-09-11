@@ -23,7 +23,6 @@ public class SearchCarDTOIn {
     @PositiveOrZero(message = "Mileage must be a positive or zero number")
     @NotNull(message = "Mileage is required")
     private Integer mileage;
-    private String city;
     private Boolean autoNegotiation;
     private Double price;
     private String notes;
