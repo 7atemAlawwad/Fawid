@@ -64,9 +64,10 @@ public class ConfigSecurity {
                 .requestMatchers("/api/v1/call/**").hasAnyAuthority("SELLER","BUYER")
 
                 // Listings (Car, Real Estate, General)
+                .requestMatchers("/api/v1/listing/get-by-id/**").permitAll()
                 .requestMatchers("/api/v1/car-listing/**",
                         "/api/v1/real-estate-listing/**",
-                        "/api/v1/listing/**").hasAnyAuthority("SELLER","BUYER")
+                        "/api/v1/listing/**").hasAuthority("SELLER")
 
                 // Contact Us
                 .requestMatchers("/api/v1/contact-us/**").permitAll()
@@ -75,8 +76,10 @@ public class ConfigSecurity {
                 .requestMatchers("/api/v1/invoice/**").hasAnyAuthority("SELLER", "ADMIN","BUYER")
 
                 // Negotiations
-                .requestMatchers("/api/v1/negotiations/**",
-                        "/api/v1/negotiation-message/**").hasAnyAuthority("SELLER","BUYER")
+                .requestMatchers("/api/v1/negotiation-message/negotiations/*/messages/seller").hasAuthority("SELLER")
+                .requestMatchers("/api/v1/negotiation-message/negotiations/*/messages/buyer").hasAuthority("BUYER")
+                .requestMatchers("/api/v1/negotiation-message/negotiations/*/messages/all").hasAnyAuthority("SELLER", "BUYER")
+                .requestMatchers("/api/v1/negotiation-message/*/ai/summarize").hasAnyAuthority("SELLER", "BUYER")
 
                 // Payment
                 .requestMatchers("/api/v1/payment/**").hasAnyAuthority("SELLER","BUYER")
@@ -90,8 +93,13 @@ public class ConfigSecurity {
 
 
                 // Subscription
-                .requestMatchers("/api/v1/subscription/**").hasAuthority("SELLER")
-
+                .requestMatchers("/api/v1/subscription/set-phone-id/**").hasAuthority("ADMIN")
+                .requestMatchers(
+                        "/api/v1/subscription/cancel/**",
+                        "/api/v1/subscription/get-all",
+                        "/api/v1/subscription/get-by-id/**",
+                        "/api/v1/subscription/monthly",
+                        "/api/v1/subscription/yearly").hasAuthority("SELLER")
 
 
                 .anyRequest().authenticated()

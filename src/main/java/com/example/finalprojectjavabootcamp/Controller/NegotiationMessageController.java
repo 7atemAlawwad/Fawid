@@ -32,7 +32,7 @@ public class NegotiationMessageController {
         return ResponseEntity.ok(new ApiResponse("seller message sent."));
     }
 
-    @GetMapping("/api/v1/negotiations/{negotiationId}/messages/all")
+    @GetMapping("/negotiations/{negotiationId}/messages/all")
     public ResponseEntity<?> listAll(@PathVariable Integer negotiationId) {
         return ResponseEntity.ok(service.listAscSimple(negotiationId));
     }

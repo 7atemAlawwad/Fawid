@@ -37,8 +37,6 @@ public class RepositoryTests {
     @Autowired
     private UserRepository userRepository;
 
-    @Autowired
-    private CallRepository callRepository;
 
     Buyer buyer;
     Seller seller;
@@ -46,7 +44,6 @@ public class RepositoryTests {
     User user;
 
 
-    private Call call1, call2;
 
     @BeforeEach
     void setUp() {

@@ -44,6 +44,7 @@ import java.util.Set;
     @JsonIgnore
     private Seller seller;
 
+    @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "listing")
     private Set<Negotiation> negotiation;
 

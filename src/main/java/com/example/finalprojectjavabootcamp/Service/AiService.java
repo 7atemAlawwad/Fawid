@@ -148,7 +148,6 @@ public class AiService {
         if (!promptTemplates.containsKey(template)) {
             throw new ApiException("Template not found");
         }
-        System.out.println(message);
         String currentTemplate = promptTemplates.get(template);
         
         return chatClient

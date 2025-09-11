@@ -48,12 +48,15 @@ public class ListingService {
         return listingRepository.searchListings(query);
     }
 
-    public Listing getListingById(Integer id){
+    public Object getListingById(Integer id){
         Listing listing = listingRepository.getListingById(id);
         if (listing == null){
             throw new ApiException("Listing not found");
         }
-        return listing;
+        if (listing.getType().equalsIgnoreCase("car")){
+            return listing.getCarListing();
+        }
+        return listing.getRealEstateListing();
     }
 
     public void deleteListing(Integer id){

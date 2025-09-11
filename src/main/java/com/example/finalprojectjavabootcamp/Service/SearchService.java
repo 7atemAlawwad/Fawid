@@ -49,9 +49,8 @@ public class SearchService {
 
 
         for (CarListing listing : listings) {
-            String ai = aiService.chat("deep_search_ranker_ar",toJson(searchCarDTOIn)+"\n"+toJson(carListingRepository.findById(listing.getId())));
-            Result result = new Result(null,listing.getId(),ai,search);
-            if(result.getCompatability().equals(ai)){
+            Result result = new Result(null,listing.getId(),aiService.chat("deep_search_ranker_ar",toJson(searchCarDTOIn)+"\n"+toJson(carListingRepository.findCarListingById(listing.getId()))),search);
+            if(result.getCompatability().equals("لا يوجد مطابقة")){
                 continue;
             }
             resultRepository.save(result);

@@ -16,8 +16,10 @@ public interface CarListingRepository extends JpaRepository<CarListing,Integer> 
     List<CarListing> findCarListingsByYear(Integer year);
     @Query("SELECT c FROM CarListing c WHERE LOWER(c.fuel_type) = LOWER(:fuelType)")
     List<CarListing> findCarListingsByFuelType(String fuelType);
-    @Query("SELECT c FROM CarListing c WHERE c.listing.city =: city")
+    @Query("SELECT c FROM CarListing c WHERE c.listing.city= :city")
     List<CarListing> findCarListingsByCity(String city);
 
     List<CarListing> findCarListingsByMileageLessThanEqual(Integer mileageIsLessThan);
+
+    Object findCarListingById(Integer id);
 }
