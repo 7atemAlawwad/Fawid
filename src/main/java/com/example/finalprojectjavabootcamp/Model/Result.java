@@ -22,6 +22,9 @@ public class Result {
 
     private Integer listingId;
 
+
+    private String compatability;
+
     @ManyToOne
     @JsonIgnore
     private Search search;

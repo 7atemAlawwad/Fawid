@@ -15,9 +15,7 @@ import org.hibernate.annotations.Check;
 @Entity
 
 
-@Check(constraints = "LOWER(color) IN ('white','black', 'gray', 'silver', 'blue', 'green', 'red', 'orange', 'yellow', 'brown', 'beige', 'purple', 'pink', 'gold', 'other') AND " +
-                     "LOWER(fuel_type) IN ('91','95','diesel','electric') AND " +
-                     "LOWER(car_type) IN ('suv','sedan','hatchback','coupe','convertible','wagon','van','truck','other')")
+
 public class CarListing {
 
     @Id
